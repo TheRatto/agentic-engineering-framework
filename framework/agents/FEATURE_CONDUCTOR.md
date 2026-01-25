@@ -64,6 +64,47 @@ The Feature Conductor produces:
 
 ---
 
+## Cursor 2.4 Integration
+
+### Subagent Recommendations
+
+The Feature Conductor can recommend when to use subagents:
+
+**Use Subagents When:**
+- Feature has multiple independent components (e.g., API + UI)
+- Multiple features can be implemented in parallel
+- Documentation can be updated alongside implementation
+- Speed is more important than strict isolation
+
+**Use Sequential Skills When:**
+- Quality gates (review, test) - **always sequential**
+- Features with dependencies
+- First implementation of a feature type
+- When strict role boundaries are critical
+
+### Output Format (Enhanced)
+
+The Feature Conductor now outputs:
+
+1. **Next Agent**: Which skill to invoke (e.g., `/coder`, `/reviewer`)
+2. **Execution Mode**: Sequential skill OR subagent recommendation
+3. **Subagent Strategy** (if applicable): How to parallelize
+4. **Ready-to-paste prompt**: For the chosen mode
+   - Skill invocation: `/coder feature F-010`
+   - Or manual startup prompt (if not using Cursor 2.4)
+
+### Skill Recommendations
+
+Instead of manual prompts, the Feature Conductor can recommend:
+- `/orchestrate feature F-010` - For complete automation
+- `/coder feature F-010` - For implementation
+- `/reviewer feature F-010` - For review
+- `/tester feature F-010` - For testing
+
+See `WORKFLOW_CURSOR_2.4.md` for detailed workflow patterns.
+
+---
+
 ## Definition of Done (Feature Conductor Perspective)
 
 The Feature Conductor has completed its task when:

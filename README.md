@@ -55,6 +55,8 @@ This framework applies proven software engineering practices — roles, artefact
 
 This framework is **tool-agnostic** — it works with Cursor, ChatGPT, Claude, or any LLM that supports multi-agent workflows.
 
+**Cursor 2.4+ Integration:** The framework now includes Skills for Cursor 2.4's subagents and skills features. See `framework/WORKFLOW_CURSOR_2.4.md` for details.
+
 ---
 
 ## Who this is for
@@ -68,6 +70,24 @@ This framework is **tool-agnostic** — it works with Cursor, ChatGPT, Claude, o
 
 ## How to use it
 
+### Option 1: Cursor 2.4+ with Skills (Recommended)
+
+If you're using Cursor 2.4 or later:
+
+1. Copy this template for a new project
+2. Define your project: Create `PROJECT_BRIEF.md` and `PRD.md`
+3. Use skills directly:
+   - `/planner define features for user authentication`
+   - `/coder feature F-010`
+   - `/reviewer feature F-010`
+   - `/tester feature F-010`
+   - `/orchestrate feature F-010` (runs complete workflow)
+4. File reports in `/reports/` as work progresses
+
+See `framework/WORKFLOW_CURSOR_2.4.md` for detailed workflow patterns.
+
+### Option 2: Manual Startup Prompts (Legacy/Other Tools)
+
 1. Copy this template for a new project
 2. Define your project: Create `PROJECT_BRIEF.md` and `PRD.md`
 3. Use agent startup prompts from `framework/agents/AGENT_STARTUP_PROMPTS.md`
@@ -79,8 +99,10 @@ The framework is designed to be **adapted**, not blindly followed.
 For detailed framework documentation, see:
 - **`framework/FRAMEWORK_OVERVIEW.md`** — Core principles and philosophy
 - **`framework/WORKFLOW.md`** — Mandatory workflow rules
+- **`framework/WORKFLOW_CURSOR_2.4.md`** — Cursor 2.4 workflow patterns
 - **`framework/ARTEFACTS.md`** — Artefact definitions
 - **`framework/agents/AGENT_STARTUP_PROMPTS.md`** — Copy/paste prompts for each role
+- **`framework/skills/*/SKILL.md`** — Cursor 2.4 skills definitions
 
 ---
 
@@ -100,13 +122,21 @@ These documents are required because:
 
 ### Starting a Feature
 
+**With Cursor 2.4+ Skills:**
+1. Invoke the appropriate skill:
+   - `/planner define features for user authentication` (if feature needs definition)
+   - `/coder feature F-010` (if feature is defined)
+   - `/orchestrate feature F-010` (to run complete workflow automatically)
+2. The agent will handle the workflow and generate next-agent prompts
+
+**With Manual Prompts:**
 1. Open `framework/agents/AGENT_STARTUP_PROMPTS.md`
 2. Copy the **CODER** startup prompt (if feature is defined) or **PLANNER** prompt (if feature needs definition)
 3. Replace `<FEATURE_ID>` with your feature ID (e.g., `F-010`)
 4. Paste into a new Cursor chat
 5. The agent will output the next-agent prompt for you to copy/paste
 
-See **`framework/WORKFLOW.md`** for the complete workflow.
+See **`framework/WORKFLOW.md`** for the complete workflow and **`framework/WORKFLOW_CURSOR_2.4.md`** for Cursor 2.4 patterns.
 
 ---
 
