@@ -8,9 +8,44 @@ The goal is **consistency with low ceremony**.
 
 ---
 
-## General Usage Instructions
+## Cursor 2.4 Usage
 
-When starting a new agent session in Cursor:
+### Option 1: Use Skills (Recommended)
+
+Cursor 2.4 supports **Skills** - discoverable agent capabilities that can be invoked directly.
+
+**Simply invoke the skill:**
+- `/coder feature F-010`
+- `/reviewer feature F-010`
+- `/tester feature F-010`
+- `/planner define features for user authentication`
+- `/orchestrate feature F-010` (runs complete workflow)
+
+Skills automatically read the framework documents and role definitions. See `framework/skills/*/SKILL.md` for each skill's capabilities.
+
+**For complete automation:**
+- `/orchestrate feature F-010` - Handles entire feature workflow
+- `/orchestrate feature F-010 --parallel` - Uses subagents for parallel implementation
+
+See `WORKFLOW_CURSOR_2.4.md` for detailed workflow patterns and `MIGRATION_CURSOR_2.4.md` for migration guidance.
+
+### Option 2: Use Startup Prompts (Legacy/Manual)
+
+If you need manual control or are not using Cursor 2.4, use the prompts below. Replace `<FEATURE_ID>` with your feature ID (e.g., `F-010`).
+
+### Option 3: Use Subagents
+
+For parallel work, use the orchestrator skill or manually spawn subagents:
+- "Spawn a coder subagent to implement component A of feature F-010"
+- "Use subagents to implement feature F-010 in parallel"
+
+**Note:** Quality gates (review, test) should always be sequential, not parallel.
+
+---
+
+## General Usage Instructions (Manual Prompts)
+
+When starting a new agent session in Cursor using manual prompts:
 
 1. Copy the prompt for the required role
 2. Replace `<FEATURE_ID>` or `<TASK>` as needed

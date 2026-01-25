@@ -130,3 +130,78 @@ Runbooks and helper files may be used to reduce execution friction.
 - **FEATURE_RUNNER.md** may be used as a convenience checklist for stepping through a feature.
 - These aids do not replace the mandatory workflow defined in this document.
 - Authority and state transitions remain governed by role definitions and artefacts.
+
+---
+
+## Cursor 2.4 Subagent Integration
+
+### Subagent Rules
+
+1. **Quality Gates Remain Sequential**
+   - Review and Test phases MUST be sequential
+   - No parallel review or testing of the same feature
+   - Single reviewer validates integration of parallel work
+   - Single tester validates end-to-end functionality
+
+2. **Implementation Can Be Parallel**
+   - Multiple independent components can be implemented via subagents
+   - Each subagent must produce its own implementation report
+   - Main agent coordinates integration
+   - Subagents must not share mutable state
+
+3. **State Updates**
+   - Subagents update FEATURES.md status according to workflow rules
+   - Each subagent files reports in `/reports/`
+   - Main agent ensures consistency
+   - All state is artefact-driven, not chat-based
+
+4. **Artefact Requirements**
+   - Subagents must read framework documents
+   - Subagents must follow role definitions in `framework/agents/`
+   - Subagents must produce required outputs per TEMPLATES.md
+   - Subagents must update FEATURES.md status correctly
+
+### Example: Parallel Implementation
+
+**Feature F-010: User Authentication**
+- Component A: API endpoints (subagent 1)
+- Component B: UI forms (subagent 2)
+- Component C: Documentation (subagent 3)
+
+**Execution:**
+1. Main agent spawns 3 subagents with `/coder` skill
+2. Each subagent implements its component
+3. Each subagent files implementation report in `/reports/implementation/`
+4. Main agent coordinates integration
+5. Sequential `/reviewer` skill reviews integration
+6. Sequential `/tester` skill validates end-to-end
+
+**State Management:**
+- Feature status updated in FEATURES.md by each subagent
+- All reports filed in `/reports/`
+- Review and test phases update status sequentially
+- Final status is `done` only after all phases complete
+
+### When to Use Subagents
+
+**Use Subagents When:**
+- Feature has multiple independent components
+- Components don't share mutable state
+- Speed is more important than strict isolation
+- Documentation can be updated alongside implementation
+
+**Use Sequential Skills When:**
+- Quality gates (review, test) - always sequential
+- Features with dependencies between components
+- First implementation of a feature type
+- When strict role boundaries are critical
+
+### Skills vs Manual Prompts
+
+The framework supports both:
+- **Skills**: Invoke with `/coder feature F-010` (Cursor 2.4+)
+- **Manual Prompts**: Copy/paste from AGENT_STARTUP_PROMPTS.md
+
+Both approaches follow the same workflow rules and produce the same artefacts.
+
+See `WORKFLOW_CURSOR_2.4.md` for detailed workflow patterns with skills and subagents.

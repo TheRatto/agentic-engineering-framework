@@ -75,6 +75,28 @@ If the feature cannot be completed as scoped, stop and flag it.
 
 ---
 
+## Test Execution & Cleanup (MANDATORY)
+
+- Default test mode is **one-shot**, not watch:
+  - Prefer: `vitest run` (or `npm test -- --run`) for validation.
+- Watch mode (`vitest --watch`) is allowed **only** when explicitly requested or when continuous feedback is required.
+- If watch mode is started, it MUST be stopped before finishing the task.
+
+### Cleanup Contract (run before final response)
+1) Gracefully stop any running test watchers (Ctrl+C in the terminal session).
+2) Verify no vitest processes remain:
+   - `pgrep -fl vitest` must return nothing.
+3) If any vitest remains, terminate them:
+   - `pkill -f vitest`
+4) If node processes are still multiplying or memory is ballooning, as a last resort:
+   - `pkill -f "node.*vitest"`
+
+### Completion Output
+- End every “done” message with:
+  - `Tests: <PASS/FAIL> (<command used>) — Watchers: <none/left running intentionally>`
+
+  ---
+
 ## Required Output
 
 ### 1. Code Changes
@@ -105,9 +127,9 @@ Filename convention: F-XXX-IMPLEMENTATION-REPORT.md
 
 This report is consumed by Reviewer and Documentation agents.
 
-### 3. Next Agent Startup Prompt (RECOMMENDED)
+### 3. Next Agent Startup Prompt 
 
-To reduce user overhead, the Coder **should** output a ready-to-paste startup prompt for the REVIEWER:
+To reduce user overhead, the Coder will output a ready-to-paste startup prompt for the REVIEWER:
 
 - Use the REVIEWER prompt defined in `AGENT_STARTUP_PROMPTS.md`
 - Replace all occurrences of `<FEATURE_ID>` with the actual Feature ID (e.g. `F-010`) for this feature

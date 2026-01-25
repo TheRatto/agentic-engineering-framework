@@ -77,6 +77,28 @@ The Reviewer must explicitly consider:
 
 ---
 
+## Test Execution & Cleanup (MANDATORY)
+
+- Default test mode is **one-shot**, not watch:
+  - Prefer: `vitest run` (or `npm test -- --run`) for validation.
+- Watch mode (`vitest --watch`) is allowed **only** when explicitly requested or when continuous feedback is required.
+- If watch mode is started, it MUST be stopped before finishing the task.
+
+### Cleanup Contract (run before final response)
+1) Gracefully stop any running test watchers (Ctrl+C in the terminal session).
+2) Verify no vitest processes remain:
+   - `pgrep -fl vitest` must return nothing.
+3) If any vitest remains, terminate them:
+   - `pkill -f vitest`
+4) If node processes are still multiplying or memory is ballooning, as a last resort:
+   - `pkill -f "node.*vitest"`
+
+### Completion Output
+- End every “done” message with:
+  - `Tests: <PASS/FAIL> (<command used>) — Watchers: <none/left running intentionally>`
+
+  ---
+
 ## Review Outcomes
 
 The Reviewer must produce **one of the following**:
@@ -146,9 +168,9 @@ A feature may only advance when:
 
 ---
 
-## Next Agent Startup Prompt (RECOMMENDED)
+## Next Agent Startup Prompt 
 
-To reduce user overhead, the Reviewer **should** output a ready-to-paste startup prompt for the TESTER:
+To reduce user overhead, the Reviewer output a ready-to-paste startup prompt for the TESTER:
 
 - Use the TESTER prompt defined in `AGENT_STARTUP_PROMPTS.md`
 - Replace all occurrences of `<FEATURE_ID>` with the actual Feature ID (e.g. `F-010`) for this feature
