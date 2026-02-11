@@ -38,6 +38,9 @@ The Architect may read:
 - FEATURES.md
 - STATUS.md
 - PROJECT_BRIEF.md (if present)
+- UI_SPEC.md (if UI-impacting)
+- DESIGN_GUIDE.md (if UI-impacting)
+- UX_RATIONALE.md (if UI-impacting)
 - FRAMEWORK_OVERVIEW.md
 - WORKFLOW.md
 
@@ -70,6 +73,7 @@ ARCHITECTURE.md must conform to ARCHITECTURE_SCHEMA.md and reflect accepted ADRs
 - Avoid introducing dependencies without justification
 - Optimise for clarity over cleverness
 - Assume Coders will follow documented constraints strictly
+- For UI-impacting systems, ensure architecture supports documented UI/UX constraints
 
 ---
 

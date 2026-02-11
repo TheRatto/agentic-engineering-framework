@@ -93,6 +93,79 @@ Templates must be followed exactly.
 
 ---
 
+## Designer – Direction Proposal
+
+### Feature <ID> – Design Direction Proposal
+
+#### Candidate Directions
+- Direction A: summary, strengths, risks
+- Direction B: summary, strengths, risks
+- Direction C (optional): summary, strengths, risks
+
+#### Evaluation Matrix
+- Usability: A/B/C score
+- Differentiation: A/B/C score
+- Accessibility: A/B/C score
+- Implementation complexity: A/B/C score
+
+#### Selected Direction
+- Chosen option
+- Why selected
+- Why alternatives were not selected
+
+#### Wireframe / Layout Notes
+- High-level structure and interaction states
+
+#### Handoff Notes
+- Constraints and edge cases for Coder and Reviewer
+
+---
+
+## Designer – UX Rationale Entry
+
+### Feature <ID> – UX Rationale Entry
+
+#### Context
+- Problem and user intent
+
+#### Options Considered
+- Option 1: trade-offs
+- Option 2: trade-offs
+- Option 3 (optional): trade-offs
+
+#### Decision
+- Selected direction and justification
+
+#### References
+- Link + relevance note
+
+#### Validation Plan
+- What to test and success signals
+
+---
+
+## UI Feature Gate Checklist (Reviewer / Tester)
+
+### Feature <ID> – UI Gate Checklist
+
+#### Design Artefacts
+- UI-impacting feature: Yes / No
+- Designer waiver documented (if applicable): Yes / No
+- UI_SPEC.md aligned: Yes / No
+- DESIGN_GUIDE.md aligned: Yes / No
+- UX_RATIONALE.md considered: Yes / No
+
+#### UX and Visual Quality
+- Core flows are clear and testable: Yes / No
+- Key states are represented correctly: Yes / No
+- Accessibility expectations are satisfied: Yes / No
+- Distinctive design intent preserved (or justified deviation): Yes / No
+
+#### Notes
+- Issues, risks, or follow-ups
+
+---
+
 ## Documentation – Update Summary
 
 ### Documentation Update Summary
@@ -148,6 +221,8 @@ They are reference templates only and do not contain project-specific data.
 - **STATUS_SCHEMA.md**
 - **CHANGELOG_SCHEMA.md**
 - **UI_SPEC_SCHEMA.md**
+- **DESIGN_GUIDE_SCHEMA.md**
+- **UX_RATIONALE_SCHEMA.md**
 
 ### Architecture
 - **ADR_SCHEMA.md**

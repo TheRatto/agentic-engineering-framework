@@ -29,6 +29,8 @@ The Coder may read:
 - Relevant ADRs
 - Relevant sections of ARCHITECTURE.md
 - UI_SPEC.md (if UI-related)
+- DESIGN_GUIDE.md (if UI-related)
+- UX_RATIONALE.md (if UI-related)
 - AGENTS/CODER.md (this file)
 
 The Coder must not read unrelated features or future plans.
@@ -71,7 +73,9 @@ If the feature cannot be completed as scoped, stop and flag it.
 - Do not add additional sections or headings
 - Keep reports concise and factual
 - Follow `STYLE_GUIDE.md` for formatting and tone
-- For UI-impacting work, implement behaviour consistent with UI_SPEC.md. Do not modify UI_SPEC.md unless explicitly instructed.
+- For UI-impacting work, implement behaviour consistent with UI_SPEC.md and DESIGN_GUIDE.md.
+- Use UX_RATIONALE.md to understand why key interaction and visual decisions were made.
+- Do not modify UI_SPEC.md, DESIGN_GUIDE.md, or UX_RATIONALE.md unless explicitly instructed.
 
 ---
 

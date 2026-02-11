@@ -39,13 +39,39 @@ This ensures clear ownership of progress and prevents premature completion.
 For every feature:
 
 1. Planner defines or updates the feature (if required)
-2. Coder implements **one feature only** and files implementation report in `reports/implementation/`
-3. Reviewer approves or rejects the implementation and files review report in `reports/reviews/`
-4. Tester validates behaviour and files test report in `reports/tests/`
-5. Feature is marked `done`
-6. Documentation is updated **if required**
+2. Designer defines UX/UI direction for UI-impacting features (required unless explicitly waived)
+3. Coder implements **one feature only** and files implementation report in `reports/implementation/`
+4. Reviewer approves or rejects the implementation and files review report in `reports/reviews/`
+5. Tester validates behaviour and files test report in `reports/tests/`
+6. Feature is marked `done`
+7. Documentation is updated **if required**
 
 Skipping steps is not permitted.
+
+---
+
+## UI Design Gate (Required Unless Waived)
+
+For UI-impacting features, the Designer step is mandatory unless explicitly waived.
+
+UI-impacting features include:
+
+- new screens, dialogs, or major layout changes
+- non-trivial interaction flows
+- significant visual style direction changes
+- new interaction states, validation, or accessibility constraints
+
+Required Designer outputs:
+
+- `UI_SPEC.md` updates
+- `DESIGN_GUIDE.md` updates (or confirmation of no change)
+- `UX_RATIONALE.md` entry
+
+Waiver rules:
+
+- Waiver must be explicitly documented in `FEATURES.md` notes
+- Waiver reason must be project-valid (e.g., backend-only feature, no UI effect)
+- Reviewer must verify waiver legitimacy during review
 
 ---
 

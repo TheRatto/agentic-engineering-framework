@@ -61,6 +61,7 @@ The Feature Conductor produces:
 - Feature state in FEATURES.md determines the next step
 - Mandatory workflow steps must not be skipped
 - Ambiguity must be surfaced, not resolved implicitly
+- For UI-impacting features, Designer is required unless a documented waiver exists
 
 ---
 
@@ -97,9 +98,19 @@ The Feature Conductor now outputs:
 
 Instead of manual prompts, the Feature Conductor can recommend:
 - `/orchestrate feature F-010` - For complete automation
+- `/designer feature F-010` - For UI/UX direction and artefact updates
 - `/coder feature F-010` - For implementation
 - `/reviewer feature F-010` - For review
 - `/tester feature F-010` - For testing
+
+When a feature is UI-impacting, the Feature Conductor should route:
+
+1. Planner (if feature definition is incomplete)
+2. Designer (required unless explicitly waived)
+3. Architect (if design implications require architecture decisions)
+4. Coder
+5. Reviewer
+6. Tester
 
 See `WORKFLOW_CURSOR_2.4.md` for detailed workflow patterns.
 

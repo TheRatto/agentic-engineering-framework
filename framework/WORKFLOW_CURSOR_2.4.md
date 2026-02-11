@@ -15,10 +15,11 @@ Use skills sequentially to maintain strict role boundaries and quality gates.
 **Example:**
 ```
 1. /planner define features for user authentication
-2. /coder feature F-010
-3. /reviewer feature F-010
-4. /tester feature F-010
-5. /docs update docs for feature F-010
+2. /designer feature F-010 (required for UI-impacting features unless waived)
+3. /coder feature F-010
+4. /reviewer feature F-010
+5. /tester feature F-010
+6. /docs update docs for feature F-010
 ```
 
 **When to use:**
@@ -59,13 +60,16 @@ Use subagents for parallel work, then sequential skills for quality gates.
    ├─> Subagent 1: /coder (Component A)
    └─> Subagent 2: /coder (Component B)
 
-2. After implementation, use sequential /reviewer skill
+2. For UI-impacting features, run sequential /designer skill unless waived
+   → /designer feature F-010
+
+3. After implementation, use sequential /reviewer skill
    → /reviewer feature F-010
 
-3. After review, use sequential /tester skill
+4. After review, use sequential /tester skill
    → /tester feature F-010
 
-4. Conditional /docs skill
+5. Conditional /docs skill
    → /docs update docs for feature F-010
 ```
 
@@ -104,6 +108,7 @@ Or with parallelization:
 
 ### Use Skills (Sequential) When:
 - ✅ Quality gates (review, test) - **always sequential**
+- ✅ UI design gate (`/designer`) for UI-impacting features unless waived
 - ✅ Features with dependencies
 - ✅ When strict role boundaries are critical
 - ✅ First-time feature implementation
@@ -125,6 +130,7 @@ Or with parallelization:
 - Main agent coordinates but doesn't replace individual reports
 - Feature status updates follow WORKFLOW.md state machine
 - All state is persisted in files, not chat history
+- UI-impacting features also update `UI_SPEC.md`, `DESIGN_GUIDE.md`, and `UX_RATIONALE.md`
 
 ## Quality Gate Rules
 
@@ -147,10 +153,11 @@ Or with parallelization:
 Feature: F-010 - Add user login form
 
 1. /planner define feature F-010
-2. /coder feature F-010
-3. /reviewer feature F-010
-4. /tester feature F-010
-5. /docs update docs for feature F-010
+2. /designer feature F-010
+3. /coder feature F-010
+4. /reviewer feature F-010
+5. /tester feature F-010
+6. /docs update docs for feature F-010
 ```
 
 ### Complex Feature (Hybrid)
@@ -175,10 +182,12 @@ Feature: F-012 - Payment processing
 
 Orchestrator automatically:
 1. Analyzes feature complexity
-2. Spawns subagents for parallel implementation
-3. Coordinates sequential review
-4. Coordinates sequential testing
-5. Updates documentation if needed
+2. Determines whether `/designer` is required or waived
+3. Spawns subagents for parallel implementation
+4. Coordinates required design step for UI-impacting features
+5. Coordinates sequential review
+6. Coordinates sequential testing
+7. Updates documentation if needed
 ```
 
 ## Integration with Framework Rules
@@ -200,15 +209,17 @@ Orchestrator automatically:
 - Review reports in `/reports/reviews/`
 - Test reports in `/reports/tests/`
 - Feature status in `FEATURES.md`
+- UI/UX artefacts in `UI_SPEC.md`, `DESIGN_GUIDE.md`, and `UX_RATIONALE.md` for UI-impacting work
 
 ## Best Practices
 
 1. **Start Sequential**: Use sequential skills for your first few features to understand the workflow
-2. **Parallelize Implementation**: Use subagents for implementation when components are independent
-3. **Keep Quality Gates Sequential**: Always use sequential skills for review and test
-4. **Use Orchestrator**: For standard workflows, use `/orchestrate` to reduce manual overhead
-5. **Maintain Artefacts**: Ensure all subagents file reports and update state
-6. **Read Framework Docs**: All agents (including subagents) must read framework documents
+2. **Run Design Early**: Use `/designer` before coding for UI-impacting features unless waived
+3. **Parallelize Implementation**: Use subagents for implementation when components are independent
+4. **Keep Quality Gates Sequential**: Always use sequential skills for review and test
+5. **Use Orchestrator**: For standard workflows, use `/orchestrate` to reduce manual overhead
+6. **Maintain Artefacts**: Ensure all subagents file reports and update state
+7. **Read Framework Docs**: All agents (including subagents) must read framework documents
 
 ## Troubleshooting
 
@@ -232,7 +243,7 @@ Orchestrator automatically:
 If you're currently using manual startup prompts:
 
 1. **Try Skills First**: Replace startup prompts with skill invocations
-   - `/coder feature F-010` instead of copying startup prompt
+   - `/designer feature F-010` and `/coder feature F-010` instead of copying startup prompts
    
 2. **Use Orchestrator**: For complete automation
    - `/orchestrate feature F-010` handles entire workflow

@@ -19,6 +19,7 @@ Cursor 2.4 supports **Skills** - discoverable agent capabilities that can be inv
 - `/reviewer feature F-010`
 - `/tester feature F-010`
 - `/planner define features for user authentication`
+- `/designer feature F-010`
 - `/orchestrate feature F-010` (runs complete workflow)
 
 Skills automatically read the framework documents and role definitions. See `framework/skills/*/SKILL.md` for each skill's capabilities.
@@ -80,6 +81,7 @@ PLANNER
    - FEATURES.md  
    - STATUS.md
 4. Identify gaps, ambiguities, or oversized features
+5. For each feature, mark whether it is UI-impacting and whether Designer is required or explicitly waived
 
 ### Constraints
 
@@ -120,6 +122,7 @@ Document all decisions using Architecture Decision Records (ADRs).
    - FEATURES.md
    - STATUS.md
    - PROJECT_BRIEF.md (if present)
+   - UI_SPEC.md / DESIGN_GUIDE.md / UX_RATIONALE.md (if UI-impacting)
 4. Identify architectural decisions blocking implementation
 
 ### Constraints
@@ -134,6 +137,53 @@ Document all decisions using Architecture Decision Records (ADRs).
 - One or more ADR files documenting decisions
 - Optional ARCHITECTURE.md overview
 - Updated STATUS.md indicating architecture is locked
+
+---
+
+## DESIGNER Agent — Startup Prompt
+
+### Role
+DESIGNER
+
+### Task
+Design UX/UI direction for Feature `<FEATURE_ID>` and update design artefacts.
+
+### Boot Sequence (mandatory)
+
+1. Read framework documents:
+   - FRAMEWORK_OVERVIEW.md
+   - WORKFLOW.md
+   - ARTEFACTS.md
+   - STYLE_GUIDE.md
+   - TEMPLATES.md
+2. Read design schemas:
+   - UI_SPEC_SCHEMA.md
+   - DESIGN_GUIDE_SCHEMA.md
+   - UX_RATIONALE_SCHEMA.md
+3. Read role definition:
+   - framework/agents/DESIGNER.md
+4. Review project context:
+   - PRD.md
+   - FEATURES.md
+   - STATUS.md
+   - ARCHITECTURE.md (if present)
+   - Existing UI_SPEC.md / DESIGN_GUIDE.md / UX_RATIONALE.md (if present)
+5. Confirm whether this feature is UI-impacting and whether a waiver is documented
+
+### Constraints
+
+- Do not write production code
+- Do not change feature scope without Planner coordination
+- Do not make architecture decisions owned by Architect
+- Produce 2-3 options with explicit trade-offs
+- Avoid generic design defaults unless context justifies them
+
+### Output
+
+- Updated UI_SPEC.md section(s) for the feature
+- Updated DESIGN_GUIDE.md (or explicit no-change note)
+- New UX_RATIONALE.md entry with decision and references
+- Handoff notes for Coder and Reviewer
 
 ---
 
@@ -159,6 +209,7 @@ Implement Feature `<FEATURE_ID>` from `FEATURES.md`.
 4. Read project state:
    - FEATURES.md  
    - STATUS.md  
+   - UI_SPEC.md / DESIGN_GUIDE.md / UX_RATIONALE.md (if UI-related)
    Locate the feature in `FEATURES.md` and confirm:
    - Scope
    - Acceptance criteria
@@ -204,6 +255,7 @@ Review implementation of Feature `<FEATURE_ID>`.
 4. Read review context:
    - FEATURES.md  
    - STATUS.md  
+   - UI_SPEC.md / DESIGN_GUIDE.md / UX_RATIONALE.md (if UI-related)
    - Coder's implementation report for this feature (from reports/implementation/)
 5. If required context is missing, stop and request it
 
@@ -243,6 +295,7 @@ Validate Feature `<FEATURE_ID>`.
 4. Read testing context:
    - FEATURES.md  
    - STATUS.md  
+   - UI_SPEC.md / DESIGN_GUIDE.md / UX_RATIONALE.md (if UI-related)
    - Implementation report for this feature (from reports/implementation/)
 5. If acceptance criteria or test expectations are unclear, stop and ask
 
@@ -283,7 +336,7 @@ Update documentation related to Feature `<FEATURE_ID>` or recent changes.
 3. Review documentation context:
    - Implementation summaries
    - STATUS.md
-   - Relevant artefacts (ARCHITECTURE.md, UI_SPEC.md, ADRs)
+   - Relevant artefacts (ARCHITECTURE.md, UI_SPEC.md, DESIGN_GUIDE.md, UX_RATIONALE.md, ADRs)
 4. Identify documentation that no longer reflects reality
 
 ### Constraints

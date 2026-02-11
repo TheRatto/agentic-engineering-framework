@@ -13,6 +13,7 @@ Use this skill when validating that an implemented feature behaves correctly and
 - Feature must be in `test` status (after review approval)
 - Implementation report from `reports/implementation/`
 - Review report from `reports/reviews/` (if available)
+- UI_SPEC.md, DESIGN_GUIDE.md, and UX_RATIONALE.md for UI-impacting features
 
 ## What this skill does
 1. Reads `framework/agents/TESTER.md` for full role definition and constraints
@@ -38,6 +39,8 @@ For each feature:
 2. Run required tests
 3. Perform basic exploratory validation
 4. Check for obvious regressions
+
+For UI-impacting features, also validate behaviour and states against UI_SPEC.md, visual/interaction consistency from DESIGN_GUIDE.md, and critical assumptions in UX_RATIONALE.md.
 
 Testing depth should match the feature's importance and risk.
 

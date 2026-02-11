@@ -42,6 +42,7 @@ When creating or updating planning artefacts, follow the relevant schemas:
 - FEATURES_SCHEMA.md
 - STATUS_SCHEMA.md (project-level changes only)
 For UI-impacting features, ensure UI_SPEC.md is created or updated following UI_SPEC_SCHEMA.md.
+For UI-impacting features, require DESIGNER in the feature agent path unless a waiver is explicitly documented in FEATURES.md notes.
 
 ---
 
@@ -91,6 +92,8 @@ Each feature in `FEATURES.md` must include:
 - Acceptance criteria (clear and testable)
 - Tests required (at a behavioural level)
 - Notes or links to relevant artefacts
+- UI-impacting: Yes / No
+- If UI-impacting, Designer required unless explicitly waived (waiver reason must be documented)
 
 ---
 

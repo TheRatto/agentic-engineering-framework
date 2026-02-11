@@ -29,6 +29,8 @@ The Reviewer may read:
 - ARCHITECTURE.md
 - Relevant ADRs
 - UI_SPEC.md (if applicable)
+- DESIGN_GUIDE.md (if applicable)
+- UX_RATIONALE.md (if applicable)
 - Coder's implementation report (from reports/implementation/)
 - AGENTS/REVIEWER.md (this file)
 
@@ -66,6 +68,8 @@ The Reviewer must explicitly consider:
 - Does it introduce unnecessary abstraction?
 - Does it invent new patterns without justification?
 - If a feature affects UI, verify implementation matches UI_SPEC.md and flag mismatches.
+- Verify implementation aligns with DESIGN_GUIDE.md for visual and interaction consistency.
+- Verify implementation does not violate critical rationale documented in UX_RATIONALE.md.
 
 ### Consistency
 - Does this align with existing architecture?
@@ -74,6 +78,7 @@ The Reviewer must explicitly consider:
 ### Risk
 - Does this introduce technical debt?
 - Are trade-offs documented?
+- If Designer step is missing for a UI-impacting feature, is there an explicit and valid waiver in FEATURES.md?
 
 ---
 

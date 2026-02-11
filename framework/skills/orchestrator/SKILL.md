@@ -22,8 +22,14 @@ Use this skill to execute a complete feature through the workflow, automatically
 - Identifies parallelization opportunities
 - Creates execution plan
 - Determines if feature has independent components
+- Determines if feature is UI-impacting and whether a Designer waiver exists
 
-### 2. Implementation Phase
+### 2. Design Phase (required for UI-impacting features unless waived)
+- Invokes `/designer` skill
+- Ensures `UI_SPEC.md`, `DESIGN_GUIDE.md`, and `UX_RATIONALE.md` are updated
+- If scope implications are found, routes back to `/planner`
+
+### 3. Implementation Phase
 **Simple Feature (Sequential):**
 - Invokes `/coder` skill
 - Waits for implementation completion
@@ -34,17 +40,17 @@ Use this skill to execute a complete feature through the workflow, automatically
 - Coordinates implementation completion
 - Ensures all implementation reports are filed
 
-### 3. Review Phase (always sequential)
+### 4. Review Phase (always sequential)
 - Invokes `/reviewer` skill
 - Waits for approval before proceeding
 - If changes required, returns to implementation phase
 
-### 4. Test Phase (always sequential)
+### 5. Test Phase (always sequential)
 - Invokes `/tester` skill
 - Validates feature completion
 - If tests fail, returns to implementation phase
 
-### 5. Documentation Phase (conditional)
+### 6. Documentation Phase (conditional)
 - If documentation needed, spawns `/docs` subagent
 - Can run in parallel with next feature if appropriate
 - Otherwise runs sequentially after testing
@@ -53,7 +59,7 @@ Use this skill to execute a complete feature through the workflow, automatically
 
 ### Mode 1: Sequential (default)
 ```
-Main Agent → /coder → /reviewer → /tester → /docs (if needed)
+Main Agent → /designer (if UI-impacting) → /coder → /reviewer → /tester → /docs (if needed)
 ```
 
 ### Mode 2: Parallel (with --parallel flag)
@@ -65,6 +71,7 @@ Main Agent
   └─> Subagent 3: /docs (Documentation)
   
 Then sequential:
+  → /designer (if UI-impacting and not waived)
   → /reviewer (integration review)
   → /tester (end-to-end validation)
 ```
@@ -78,6 +85,7 @@ Then sequential:
 
 ## Constraints
 - Never skip quality gates (review/test)
+- Never skip required UI design gate for UI-impacting features unless explicitly waived
 - Always maintain artefact-driven state
 - Subagents must produce reports, not just code
 - Quality gates (review/test) are always sequential
@@ -92,6 +100,7 @@ Then sequential:
 ## Related skills
 - Individual agent skills can be used for manual control
 - `/planner` - If feature needs definition first
+- `/designer` - For required UI/UX direction on UI-impacting features
 - `/architect` - If architectural decisions are needed
 
 ## Boot sequence (automatic)

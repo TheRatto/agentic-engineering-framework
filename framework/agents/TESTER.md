@@ -28,6 +28,8 @@ The Tester may read:
 - FEATURES.md (feature under test)
 - STATUS.md
 - UI_SPEC.md (if UI-related)
+- DESIGN_GUIDE.md (if UI-related)
+- UX_RATIONALE.md (if UI-related)
 - Coder's implementation report (from reports/implementation/)
 - AGENTS/TESTER.md (this file)
 
@@ -55,6 +57,12 @@ For each feature:
 2. Run required tests
 3. Perform basic exploratory validation
 4. Check for obvious regressions
+
+For UI-impacting features, also validate:
+
+- behaviour and states from UI_SPEC.md
+- visual/interaction consistency implied by DESIGN_GUIDE.md
+- critical UX assumptions and edge cases documented in UX_RATIONALE.md
 
 Testing depth should match the feature’s importance and risk.
 

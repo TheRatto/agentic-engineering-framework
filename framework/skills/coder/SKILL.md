@@ -13,6 +13,7 @@ Use this skill when implementing a feature from FEATURES.md. The Coder implement
 - Feature must be in `todo` or `doing` status
 - Architecture decisions (ADRs) must be available if needed
 - PROJECT_BRIEF.md and PRD.md for project context
+- UI_SPEC.md, DESIGN_GUIDE.md, and UX_RATIONALE.md for UI-impacting features
 
 ## What this skill does
 1. Reads `framework/agents/CODER.md` for full role definition and constraints
@@ -30,6 +31,7 @@ Use this skill when implementing a feature from FEATURES.md. The Coder implement
 - Follows existing architecture and patterns
 - Updates feature status from `todo` to `doing` when implementation begins
 - Does not mark feature as `done` (Tester owns done status)
+- For UI-impacting work, follows UI_SPEC.md and DESIGN_GUIDE.md
 
 ## Outputs
 - Working code and tests

@@ -24,6 +24,7 @@ Ensure you're running Cursor 2.4 or later:
 ### Step 2: Skills Are Already Created
 
 The framework now includes skills in `framework/skills/`:
+- `designer/SKILL.md`
 - `coder/SKILL.md`
 - `reviewer/SKILL.md`
 - `tester/SKILL.md`
@@ -53,9 +54,10 @@ Start with a simple feature to test skills:
 
 **After (Skills):**
 ```
-1. /coder feature F-010
-2. /reviewer feature F-010
-3. /tester feature F-010
+1. /designer feature F-010 (UI-impacting features unless waived)
+2. /coder feature F-010
+3. /reviewer feature F-010
+4. /tester feature F-010
 ```
 
 Or use orchestrator:
@@ -99,6 +101,7 @@ If working in a team:
 ## Migration Checklist
 
 - [ ] Verify Cursor 2.4+ is installed
+- [ ] Test `/designer` skill for UI-impacting feature work
 - [ ] Test `/coder` skill with a simple feature
 - [ ] Test `/reviewer` skill
 - [ ] Test `/tester` skill
@@ -121,6 +124,7 @@ Copy TESTER prompt → Paste → Wait
 
 **New:**
 ```
+/designer feature F-010
 /coder feature F-010
 /reviewer feature F-010
 /tester feature F-010
@@ -177,6 +181,7 @@ Then: /reviewer feature F-010
 - Each agent has explicit responsibilities
 - Non-responsibilities are enforced
 - Role purity is maintained
+- Designer is required for UI-impacting features unless explicitly waived
 
 ## What Changes
 

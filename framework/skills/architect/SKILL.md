@@ -14,6 +14,7 @@ Use this skill when making core architectural decisions, selecting implementatio
 - STATUS.md (current project state)
 - PROJECT_BRIEF.md (project constraints)
 - Existing ADRs (to avoid re-litigating decisions)
+- UI_SPEC.md, DESIGN_GUIDE.md, and UX_RATIONALE.md for UI-impacting features
 
 ## What this skill does
 1. Reads `framework/agents/ARCHITECT.md` for full role definition and constraints
@@ -30,6 +31,7 @@ Use this skill when making core architectural decisions, selecting implementatio
 - Prefers simple and reversible decisions
 - Records all decisions as ADRs using ADR_SCHEMA.md
 - Does not make low-level implementation decisions
+- For UI-impacting systems, ensures architecture supports documented UX/UI constraints
 
 ## Outputs
 - One or more ADR files documenting decisions (in `/ADR/` directory)

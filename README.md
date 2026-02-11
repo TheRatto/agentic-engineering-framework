@@ -23,7 +23,7 @@ This framework applies proven software engineering practices — roles, artefact
 ## Core Principles
 
 - **Explicit roles**  
-  Planner, Architect, Coder, Reviewer, Tester, Docs, Security Reviewer — each with clear authority and constraints.
+  Planner, Designer, Architect, Coder, Reviewer, Tester, Docs, Security Reviewer — each with clear authority and constraints.
 
 - **Artefact-driven workflow**  
   PRDs, FEATURES, ADRs, Architecture summaries, UI specs, changelogs — no hidden state.
@@ -78,6 +78,7 @@ If you're using Cursor 2.4 or later:
 2. Define your project: Create `PROJECT_BRIEF.md` and `PRD.md`
 3. Use skills directly:
    - `/planner define features for user authentication`
+   - `/designer feature F-010` (required for UI-impacting features unless waived)
    - `/coder feature F-010`
    - `/reviewer feature F-010`
    - `/tester feature F-010`
@@ -125,6 +126,7 @@ These documents are required because:
 **With Cursor 2.4+ Skills:**
 1. Invoke the appropriate skill:
    - `/planner define features for user authentication` (if feature needs definition)
+   - `/designer feature F-010` (for UI-impacting features unless waived)
    - `/coder feature F-010` (if feature is defined)
    - `/orchestrate feature F-010` (to run complete workflow automatically)
 2. The agent will handle the workflow and generate next-agent prompts

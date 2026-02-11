@@ -76,6 +76,38 @@ Conforms to UI_SPEC_SCHEMA.md
 
 ---
 
+### DESIGN_GUIDE.md
+
+**Purpose:** Visual language and interaction style direction  
+**Owner:** Designer
+
+Includes:
+
+- Visual positioning and design intent
+- Color, typography, and spacing systems
+- Differentiation rules and anti-generic constraints
+- Platform-level design considerations
+
+Conforms to DESIGN_GUIDE_SCHEMA.md
+
+---
+
+### UX_RATIONALE.md
+
+**Purpose:** Decision traceability for UX/UI choices  
+**Owner:** Designer
+
+Includes:
+
+- Design options considered
+- Selected direction and trade-offs
+- Research references and adaptation notes
+- Validation and risk notes
+
+Conforms to UX_RATIONALE_SCHEMA.md
+
+---
+
 ### ARCHITECTURE.md
 
 **Purpose:** High-level system structure  

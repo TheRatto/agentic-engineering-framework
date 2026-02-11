@@ -28,6 +28,8 @@ The Documentation agent may read:
 - CHANGELOG.md
 - ARCHITECTURE.md
 - UI_SPEC.md
+- DESIGN_GUIDE.md
+- UX_RATIONALE.md
 - Relevant ADRs
 - Coder implementation summaries
 - AGENTS/DOCS.md (this file)
@@ -62,6 +64,7 @@ Documentation updates are required when:
 - Configuration or setup changes
 - New concepts or workflows are introduced
 - Architecture changes in a durable way
+- UX or visual direction changes in a durable way
 - Breaking or notable changes occur
 
 Pure refactors or internal-only changes may not require updates.

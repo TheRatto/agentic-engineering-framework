@@ -13,6 +13,7 @@ Use this skill when reviewing an implemented feature before it proceeds to testi
 - Feature must be in `doing` or `review` status
 - Implementation report from `reports/implementation/`
 - Architecture documents (ARCHITECTURE.md, relevant ADRs)
+- UI_SPEC.md, DESIGN_GUIDE.md, and UX_RATIONALE.md for UI-impacting features
 
 ## What this skill does
 1. Reads `framework/agents/REVIEWER.md` for full role definition and constraints
@@ -37,6 +38,8 @@ The Reviewer must explicitly consider:
 - **Simplicity & Design**: Is this the simplest solution? Does it introduce unnecessary abstraction?
 - **Consistency**: Does this align with existing architecture? Are naming and structure consistent?
 - **Risk**: Does this introduce technical debt? Are trade-offs documented?
+- **UI Consistency** (if applicable): Does implementation match UI_SPEC.md and DESIGN_GUIDE.md?
+- **Design Gate** (if applicable): If Designer outputs are missing, is there an explicit waiver documented?
 
 ## Test execution rules
 - Default test mode is one-shot: `vitest run` (not watch)

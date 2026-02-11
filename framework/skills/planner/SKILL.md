@@ -23,6 +23,7 @@ Use this skill when defining or refining features, maintaining project intent, o
 5. Ensures features are scoped, testable, and prioritized
 6. Updates STATUS.md if current focus changes
 7. May generate runbooks for complex features
+8. Marks UI-impacting features and requires Designer unless explicitly waived
 
 ## Constraints
 - Does not write production code
@@ -39,6 +40,7 @@ Use this skill when defining or refining features, maintaining project intent, o
 - Avoid over-specification of implementation details
 - Prefer smaller features over fewer large ones
 - Planner must assign an Agent Path per feature
+- For UI-impacting features, Agent Path must include Designer unless explicitly waived
 
 ## PRD ownership
 The Planner owns PRD.md. The PRD captures product intent, context, and reasoning, and is used to inform feature definition. The Planner is responsible for creating and updating the PRD when goals or direction change, and for extracting concrete, testable features into FEATURES.md.

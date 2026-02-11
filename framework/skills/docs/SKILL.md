@@ -12,7 +12,7 @@ Use this skill when updating documentation related to a feature or recent change
 - Feature ID (if feature-specific)
 - Implementation summaries from `reports/implementation/`
 - STATUS.md (current project state)
-- Relevant artefacts (ARCHITECTURE.md, UI_SPEC.md, ADRs)
+- Relevant artefacts (ARCHITECTURE.md, UI_SPEC.md, DESIGN_GUIDE.md, UX_RATIONALE.md, ADRs)
 
 ## What this skill does
 1. Reads `framework/agents/DOCS.md` for full role definition and constraints
@@ -34,6 +34,7 @@ Use this skill when updating documentation related to a feature or recent change
 - Documentation updates (ARCHITECTURE.md, README.md, API docs, etc.)
 - Documentation Update Summary (per TEMPLATES.md)
 - Changelog entry if required (following CHANGELOG_SCHEMA.md)
+- For UI-impacting features, ensure docs remain consistent with UI_SPEC.md, DESIGN_GUIDE.md, and UX_RATIONALE.md
 
 ## Related skills
 - `/tester` - Previous step (after feature validation)
