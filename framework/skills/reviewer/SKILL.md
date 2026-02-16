@@ -1,7 +1,7 @@
 # Reviewer Skill
 
 ## When to use
-Use this skill when reviewing an implemented feature before it proceeds to testing. The Reviewer ensures quality, consistency, and framework standards are met.
+Use this skill when reviewing an implemented feature before it proceeds to testing. The Reviewer ensures quality, consistency, and framework standards are met. **Only for features with Path: full**; features with Path: lightweight do not use Reviewer or Tester.
 
 ## How to invoke
 - Slash command: `/reviewer` or `/review`
@@ -30,7 +30,7 @@ Use this skill when reviewing an implemented feature before it proceeds to testi
 - Enforces Definition of Done strictly
 - Requires ADRs if architectural decisions are involved
 - Does not update feature status to `done` (Tester owns done)
-- May execute tests to assess quality but does not replace Tester's validation
+- Does not run tests unless the human explicitly requests it; relies on Coder report and Tester for validation
 
 ## Review checklist (mandatory)
 The Reviewer must explicitly consider:
@@ -41,18 +41,16 @@ The Reviewer must explicitly consider:
 - **UI Consistency** (if applicable): Does implementation match UI_SPEC.md and DESIGN_GUIDE.md?
 - **Design Gate** (if applicable): If Designer outputs are missing, is there an explicit waiver documented?
 
-## Test execution rules
-- Default test mode is one-shot: `vitest run` (not watch)
-- Watch mode only when explicitly requested
-- Must stop all test watchers before completion
-- Completion message must include: `Tests: <PASS/FAIL> (<command>) — Watchers: <none/left running intentionally>`
+## Test execution rules (only when human explicitly asks Reviewer to run tests)
+- Reviewer does not run tests by default
+- If human requests test run: one-shot `vitest run` (not watch), stop watchers before completion, include `Tests: <PASS/FAIL> (<command>) — Watchers: <none/left running intentionally>` in completion message
 
 ## Review outcomes
 The Reviewer must produce **one of the following**:
 
 ### ✅ Approved
 - Feature may proceed to testing
-- Status updated to `test` in FEATURES.md
+- Status updated to `test` in FEATURES.md (handoff to Tester)
 
 ### ❌ Changes Required
 - Specific issues listed

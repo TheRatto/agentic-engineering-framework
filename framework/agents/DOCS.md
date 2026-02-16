@@ -32,7 +32,7 @@ The Documentation agent may read:
 - UX_RATIONALE.md
 - Relevant ADRs
 - Coder implementation summaries
-- AGENTS/DOCS.md (this file)
+- framework/agents/DOCS.md (this role definition)
 
 ### Documentation Standards
 

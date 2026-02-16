@@ -46,11 +46,19 @@ Each feature must follow this structure exactly.
 Status:
 - todo | doing | review | test | done | blocked
 
+Path:
+- full | lightweight (optional; default is `full` when omitted)
+- **full**: Coder → Reviewer → Tester; Coder moves to `review` when done; only Tester sets `done`
+- **lightweight**: Coder may move to `done` when lightweight DoD is met; no separate Reviewer or Tester sessions. Use only for small, low-risk changes (e.g. config, single function, copy). Set by Planner only.
+
+Batch:
+- Optional. Comma-separated list of feature IDs (e.g. F-011, F-012) that the Coder may implement in one session, in order. Only for features that are all `todo` and suitable for batching (e.g. all lightweight, or one logical unit). Set by Planner only. Omit if not batched.
+
 Owner:
-- Planner – definition and scope
+- Planner – definition and scope (and Path/Batch)
 - Coder – implementation
-- Reviewer – quality and architecture
-- Tester – validation
+- Reviewer – quality and architecture (full path only)
+- Tester – validation (full path only)
 
 Scope:
 - What is included

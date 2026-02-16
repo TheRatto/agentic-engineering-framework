@@ -18,6 +18,7 @@ Use this skill to execute a complete feature through the workflow, automatically
 
 ### 1. Analysis Phase (main agent)
 - Reads FEATURES.md to locate the feature
+- Confirms Path (full | lightweight) and Batch (if set)
 - Determines feature complexity
 - Identifies parallelization opportunities
 - Creates execution plan
@@ -40,12 +41,12 @@ Use this skill to execute a complete feature through the workflow, automatically
 - Coordinates implementation completion
 - Ensures all implementation reports are filed
 
-### 4. Review Phase (always sequential)
+### 4. Review Phase (Path: full only; skip for Path: lightweight)
 - Invokes `/reviewer` skill
 - Waits for approval before proceeding
 - If changes required, returns to implementation phase
 
-### 5. Test Phase (always sequential)
+### 5. Test Phase (Path: full only; skip for Path: lightweight)
 - Invokes `/tester` skill
 - Validates feature completion
 - If tests fail, returns to implementation phase
@@ -84,7 +85,7 @@ Then sequential:
 - Artefact-driven state is maintained throughout
 
 ## Constraints
-- Never skip quality gates (review/test)
+- Never skip quality gates (review/test) for Path: full; for Path: lightweight, Coder moves to done and review/test are not used
 - Never skip required UI design gate for UI-impacting features unless explicitly waived
 - Always maintain artefact-driven state
 - Subagents must produce reports, not just code

@@ -14,6 +14,12 @@ Templates must be followed exactly.
 #### Status
 - todo / doing / review / test / done / blocked
 
+#### Path
+- full / lightweight (optional; default full)
+
+#### Batch
+- Optional. Comma-separated feature IDs if Coder may implement with others in one session (e.g. F-011, F-012)
+
 #### Scope
 - Bullet points defining what is included
 - Explicit exclusions if relevant

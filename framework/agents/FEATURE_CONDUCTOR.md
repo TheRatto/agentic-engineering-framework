@@ -41,7 +41,7 @@ The Feature Conductor may read:
 - STATUS.md
 - WORKFLOW.md
 - framework/agents/*.md
-- framework/AGENT_STARTUP_PROMPTS.md
+- framework/agents/AGENT_STARTUP_PROMPTS.md
 
 ---
 
@@ -59,7 +59,8 @@ The Feature Conductor produces:
 
 - Exactly one agent is active at a time
 - Feature state in FEATURES.md determines the next step
-- Mandatory workflow steps must not be skipped
+- **Path: full**: mandatory flow is Coder → Reviewer → Tester; do not skip steps
+- **Path: lightweight**: after Coder completes, feature moves to done; Reviewer and Tester are not invoked
 - Ambiguity must be surfaced, not resolved implicitly
 - For UI-impacting features, Designer is required unless a documented waiver exists
 

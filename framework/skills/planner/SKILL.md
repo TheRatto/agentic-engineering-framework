@@ -39,7 +39,8 @@ Use this skill when defining or refining features, maintaining project intent, o
 - Each feature must describe required tests at a high level
 - Avoid over-specification of implementation details
 - Prefer smaller features over fewer large ones
-- Planner must assign an Agent Path per feature
+- Planner must set Path (full | lightweight) per feature; default is full. Use lightweight only for small, low-risk changes.
+- Planner may set Batch (list of feature IDs) when Coder may implement multiple features in one session
 - For UI-impacting features, Agent Path must include Designer unless explicitly waived
 
 ## PRD ownership

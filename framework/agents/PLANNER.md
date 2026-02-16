@@ -16,7 +16,9 @@ remains coherent as the project evolves.
 - Ensure features are scoped, testable, and prioritised
 - Update planning artefacts as understanding evolves
 - Break large ideas into implementable units
-- Planner must assign an Agent Path per feature and may generate a runbook to define the execution order.
+- Planner must set **Path** (full | lightweight) per feature: `full` is the default (Coder → Reviewer → Tester); `lightweight` allows Coder to move to `done` without separate Reviewer/Tester sessions, for small low-risk changes only.
+- Planner may set **Batch** (optional list of feature IDs) when the Coder may implement multiple features in one session.
+- Planner may generate a runbook to define the execution order for complex features.
 
 PRD Ownership Rule
 The Planner owns PRD.md. The PRD captures product intent, context, and reasoning, and is used to inform feature definition. The Planner is responsible for creating and updating the PRD when goals or direction change, and for extracting concrete, testable features into FEATURES.md. The PRD provides context only; FEATURES.md remains the authoritative source of scope. If conflicts arise, FEATURES.md takes precedence.
@@ -32,7 +34,7 @@ The Planner may read:
 - STATUS.md
 - ARCHITECTURE.md
 - Existing ADRs
-- AGENTS/PLANNER.md (this file)
+- framework/agents/PLANNER.md (this role definition)
 
 ### Artefact Schemas
 
@@ -88,6 +90,8 @@ Each feature in `FEATURES.md` must include:
 - Feature ID
 - Title
 - Status
+- Path: full | lightweight (optional; default full). Use lightweight only for small, low-risk, well-scoped changes (e.g. config, single function, copy; no new dependencies, UI, auth, or security impact).
+- Batch: optional list of feature IDs if Coder may implement these together in one session (e.g. F-011, F-012). Omit if not batched.
 - Scope (bullet points)
 - Acceptance criteria (clear and testable)
 - Tests required (at a behavioural level)

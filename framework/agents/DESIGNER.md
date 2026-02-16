@@ -37,7 +37,7 @@ The Designer may read:
 - `framework/UI_SPEC_SCHEMA.md`
 - `framework/DESIGN_GUIDE_SCHEMA.md`
 - `framework/UX_RATIONALE_SCHEMA.md`
-- `framework/agents/DESIGNER.md` (this file)
+- framework/agents/DESIGNER.md (this role definition)
 
 ---
 

@@ -74,7 +74,7 @@ PLANNER
    - STYLE_GUIDE.md  
    - TEMPLATES.md
 2. Read role definition:
-   - framework/AGENTS/PLANNER.md
+   - framework/agents/PLANNER.md
 3. Review project context:
    - PROJECT_BRIEF.md
    - PRD.md  
@@ -82,6 +82,7 @@ PLANNER
    - STATUS.md
 4. Identify gaps, ambiguities, or oversized features
 5. For each feature, mark whether it is UI-impacting and whether Designer is required or explicitly waived
+6. Set Path (full | lightweight) per feature; set Batch (optional list of feature IDs) when Coder may implement multiple features in one session
 
 ### Constraints
 
@@ -93,7 +94,7 @@ PLANNER
 
 ### Output
 
-- New or updated feature definitions
+- New or updated feature definitions with Path (and optionally Batch) per feature
 - Clear acceptance criteria for each feature
 - Clear test expectations for each feature
 - Update STATUS.md if current focus changes
@@ -205,7 +206,7 @@ Implement Feature `<FEATURE_ID>` from `FEATURES.md`.
    - STYLE_GUIDE.md  
    - TEMPLATES.md
 3. Read role definition:
-   - framework/AGENTS/CODER.md
+   - framework/agents/CODER.md
 4. Read project state:
    - FEATURES.md  
    - STATUS.md  
@@ -215,6 +216,7 @@ Implement Feature `<FEATURE_ID>` from `FEATURES.md`.
    - Acceptance criteria
    - Tests required
    - Current feature state
+   - Path (full | lightweight) and Batch (if set)
 5. If anything is missing, ambiguous, or conflicts with role constraints, stop and ask
 
 ### Constraints
@@ -239,7 +241,7 @@ Implement Feature `<FEATURE_ID>` from `FEATURES.md`.
 REVIEWER
 
 ### Task
-Review implementation of Feature `<FEATURE_ID>`.
+Review implementation of Feature `<FEATURE_ID>`. (Only for features with Path: full; not used for Path: lightweight.)
 
 ### Boot Sequence (mandatory)
 
@@ -251,7 +253,7 @@ Review implementation of Feature `<FEATURE_ID>`.
    - STYLE_GUIDE.md  
    - TEMPLATES.md
 3. Read role definition:
-   - framework/AGENTS/REVIEWER.md
+   - framework/agents/REVIEWER.md
 4. Read review context:
    - FEATURES.md  
    - STATUS.md  
@@ -279,7 +281,7 @@ Review implementation of Feature `<FEATURE_ID>`.
 TESTER
 
 ### Task
-Validate Feature `<FEATURE_ID>`.
+Validate Feature `<FEATURE_ID>`. (Only for features with Path: full; not used for Path: lightweight.)
 
 ### Boot Sequence (mandatory)
 
@@ -291,7 +293,7 @@ Validate Feature `<FEATURE_ID>`.
    - STYLE_GUIDE.md  
    - TEMPLATES.md
 3. Read role definition:
-   - framework/AGENTS/TESTER.md
+   - framework/agents/TESTER.md
 4. Read testing context:
    - FEATURES.md  
    - STATUS.md  
@@ -332,7 +334,7 @@ Update documentation related to Feature `<FEATURE_ID>` or recent changes.
    - STYLE_GUIDE.md  
    - TEMPLATES.md
 2. Read role definition:
-   - framework/AGENTS/DOCS.md
+   - framework/agents/DOCS.md
 3. Review documentation context:
    - Implementation summaries
    - STATUS.md
@@ -407,7 +409,7 @@ Perform scheduled cleanup as defined in `STATUS.md` or by instruction.
    - STYLE_GUIDE.md  
    - TEMPLATES.md
 2. Read role definition:
-   - framework/AGENTS/CLEANUP.md
+   - framework/agents/CLEANUP.md
 3. Review cleanup scope and affected areas
 
 ### Constraints

@@ -22,31 +22,63 @@ State transitions must be explicitly updated in `FEATURES.md`.
 
 ## Feature Status Transitions
 
-The following rules govern feature state changes:
+The following rules govern feature state changes. Each transition has a single owner.
 
-- Planner creates features in `todo`
-- Coder moves features from `todo` → `doing` when implementation begins
-- Reviewer does not change feature status
-- Tester moves features from `doing` → `done` after tests pass
-- If testing fails, Tester returns the feature to `doing` with documented issues
+| State    | Set by    | When |
+|----------|-----------|------|
+| `todo`   | Planner   | When creating or (re)opening a feature |
+| `doing`  | Coder     | When implementation starts |
+| `review` | Coder     | When implementation is complete and implementation report is filed |
+| `test`   | Reviewer  | When review is Approved (handoff to Tester) |
+| `done`   | Tester    | When validation Pass |
+| `doing`  | Tester    | When validation Fail (with documented issues) |
+| `blocked`| Any       | When the feature cannot progress (reason documented) |
+
+- Planner creates features in `todo` only.
+- Coder moves `todo` → `doing` at start; `doing` → `review` when implementation is complete (report filed).
+- Reviewer moves `review` → `test` when Approved; does not change status when Changes required.
+- Tester moves `test` → `done` on Pass; `test` → `doing` on Fail.
 
 This ensures clear ownership of progress and prevents premature completion.
 
 ---
 
-## Mandatory Feature Flow
+## Mandatory Feature Flow (Full Path)
 
-For every feature:
+For every feature with **Path: full** (the default):
 
-1. Planner defines or updates the feature (if required)
+1. Planner defines or updates the feature (if required), and sets Path (and optionally Batch)
 2. Designer defines UX/UI direction for UI-impacting features (required unless explicitly waived)
-3. Coder implements **one feature only** and files implementation report in `reports/implementation/`
-4. Reviewer approves or rejects the implementation and files review report in `reports/reviews/`
-5. Tester validates behaviour and files test report in `reports/tests/`
-6. Feature is marked `done`
+3. Coder implements **one feature only** (or a Batch when set) and files implementation report(s) in `reports/implementation/`
+4. Coder moves feature status to `review` when implementation is complete
+5. Reviewer approves or rejects the implementation and files review report in `reports/reviews/`; on Approved, moves status to `test`
+6. Tester validates behaviour and files test report in `reports/tests/`; on Pass, moves status to `done`
 7. Documentation is updated **if required**
 
-Skipping steps is not permitted.
+Skipping steps is not permitted for full-path features.
+
+---
+
+## Lightweight Path (Exception)
+
+When Planner sets **Path: lightweight** for a feature:
+
+- The feature is small, low-risk, and well-scoped (e.g. config change, single function, copy change; no new dependencies, UI, auth, or security impact).
+- Coder may move the feature from `doing` to `done` when **lightweight DoD** is met: acceptance criteria met, required tests run and passing, no new TODOs, no architecture change.
+- No separate Reviewer or Tester sessions. Reviewer and Tester are not invoked for that feature.
+- Coder still produces an implementation report and follows all other Coder constraints.
+- Only Planner may set Path: lightweight; Coder must not self-assign lightweight.
+
+---
+
+## Batching
+
+When Planner sets **Batch** on a feature (optional list of feature IDs, e.g. F-011, F-012):
+
+- Coder may implement all features in the batch in one session, in the order given.
+- Each feature in the batch must have its own implementation report (or one report with a clear section per feature).
+- Status transitions apply per feature: Coder moves each to `review` when that feature is complete (full path), or to `done` when lightweight DoD is met (lightweight path).
+- Batch is only for features that are all `todo` and suitable to implement together (e.g. all lightweight, or one logical unit). Quality gates (Reviewer, Tester) remain per feature for full-path batched features.
 
 ---
 

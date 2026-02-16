@@ -29,8 +29,8 @@ Use this skill when implementing a feature from FEATURES.md. The Coder implement
 - Does not expand scope
 - Does not refactor unrelated code
 - Follows existing architecture and patterns
-- Updates feature status from `todo` to `doing` when implementation begins
-- Does not mark feature as `done` (Tester owns done status)
+- Updates feature status: `todo` → `doing` when implementation begins; `doing` → `review` when implementation is complete and report is filed (for Path: lightweight, see CODER.md)
+- Does not mark feature as `done` unless feature has Path: lightweight and lightweight DoD is met (Tester owns done for full path)
 - For UI-impacting work, follows UI_SPEC.md and DESIGN_GUIDE.md
 
 ## Outputs

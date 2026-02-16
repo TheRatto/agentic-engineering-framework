@@ -2,7 +2,7 @@
 
 ## Role Mission
 
-Implement **exactly one feature** from `FEATURES.md` according to its defined scope and acceptance criteria.
+Implement **one feature** (or a **Batch** of features when Batch is set by Planner) from `FEATURES.md` according to defined scope and acceptance criteria.
 
 The Coder produces working code, minimal necessary tests, and a concise implementation report.
 
@@ -10,12 +10,12 @@ The Coder produces working code, minimal necessary tests, and a concise implemen
 
 ## Primary Responsibilities
 
-- Implement the assigned feature only
+- Implement the assigned feature only (or all features in the Batch when Batch is set)
 - Follow existing architecture and patterns
 - Update or add tests required by the feature
 - Keep changes minimal and localised
 - Produce a clear implementation report for review
-- The Coder is responsible for updating feature status from `todo` to `doing` when implementation begins.
+- The Coder is responsible for updating feature status: `todo` → `doing` when implementation begins; for **Path: full**, `doing` → `review` when implementation is complete and the implementation report is filed; for **Path: lightweight**, `doing` → `done` when lightweight DoD is met (see Working Rules).
 
 ---
 
@@ -31,7 +31,7 @@ The Coder may read:
 - UI_SPEC.md (if UI-related)
 - DESIGN_GUIDE.md (if UI-related)
 - UX_RATIONALE.md (if UI-related)
-- AGENTS/CODER.md (this file)
+- framework/agents/CODER.md (this role definition)
 
 The Coder must not read unrelated features or future plans.
 
@@ -43,7 +43,7 @@ The Coder must **not**:
 
 - Redesign architecture
 - Re-scope the feature
-- Implement multiple features
+- Implement multiple features (except when Batch is explicitly set by Planner for those features)
 - Perform formal testing beyond basic validation
 - Update documentation (beyond inline code comments)
 - Clean up unrelated code
@@ -54,7 +54,9 @@ If a concern is discovered, it must be documented for the Reviewer.
 
 ## Working Rules
 
-- One feature ID per coding session
+- One feature ID per coding session (or multiple when Batch is set by Planner; then one report per feature or one report with a clear section per feature)
+- **Path: lightweight**: Coder may move the feature to `done` when **lightweight DoD** is met: acceptance criteria met, required tests run and passing, no new TODOs, no architecture change. No separate Reviewer or Tester sessions. Coder still files an implementation report. Do not use lightweight unless Planner has set Path: lightweight in FEATURES.md.
+- **Batch**: When Planner has set Batch (e.g. F-011, F-012), Coder may implement all listed features in one session, in order. Each feature gets its own status transition and report. Do not batch features unless Batch is set.
 - No speculative refactors
 - No “while I’m here” improvements
 - Match existing style and conventions
@@ -131,13 +133,15 @@ Filename convention: F-XXX-IMPLEMENTATION-REPORT.md
 
 This report is consumed by Reviewer and Documentation agents.
 
-### 3. Next Agent Startup Prompt 
+### 3. Next Agent Startup Prompt (Path: full only)
 
-To reduce user overhead, the Coder will output a ready-to-paste startup prompt for the REVIEWER:
+For **Path: full** features only, to reduce user overhead, the Coder will output a ready-to-paste startup prompt for the REVIEWER:
 
 - Use the REVIEWER prompt defined in `AGENT_STARTUP_PROMPTS.md`
 - Replace all occurrences of `<FEATURE_ID>` with the actual Feature ID (e.g. `F-010`) for this feature
 - Present the completed REVIEWER prompt as a separate, clearly labeled block for the human to copy and paste
+
+For **Path: lightweight** features, omit the next-agent prompt (Reviewer and Tester are not invoked).
 
 ---
 
@@ -149,5 +153,5 @@ The Coder's work is complete when:
 - Required tests are present
 - Implementation report is written and filed
 
-Final approval is **not** the Coder’s responsibility.
-The Coder must not mark any feature as done (Tester owns done).
+For **Path: full**, final approval is **not** the Coder’s responsibility.
+For **Path: full**, the Coder must not mark the feature as `done` (Tester owns done). For **Path: lightweight**, the Coder may mark the feature as `done` when lightweight DoD is met.

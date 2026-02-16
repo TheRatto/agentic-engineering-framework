@@ -1,7 +1,7 @@
 # Tester Skill
 
 ## When to use
-Use this skill when validating that an implemented feature behaves correctly and meets acceptance criteria. The Tester decides pass or fail.
+Use this skill when validating that an implemented feature behaves correctly and meets acceptance criteria. The Tester decides pass or fail. **Only for features with Path: full**; features with Path: lightweight do not use Reviewer or Tester.
 
 ## How to invoke
 - Slash command: `/tester` or `/test`
@@ -23,7 +23,7 @@ Use this skill when validating that an implemented feature behaves correctly and
 5. Executes required tests (manual or automated)
 6. Identifies regressions or edge cases
 7. Produces test report in `reports/tests/`
-8. Updates feature status to `done` (if pass) or `doing` (if fail)
+8. Updates feature status: `test` → `done` (if pass) or `test` → `doing` (if fail)
 
 ## Constraints
 - Does not modify code
@@ -60,7 +60,7 @@ Testing depth should match the feature's importance and risk.
 - Issues documented clearly
 - Reproduction steps provided
 - Expected vs actual behaviour described
-- Feature status returned to `doing` in FEATURES.md
+- Feature status returned to `doing` in FEATURES.md (for rework)
 
 Failures must be concrete and actionable.
 

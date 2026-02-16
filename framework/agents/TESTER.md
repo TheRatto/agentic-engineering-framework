@@ -5,7 +5,7 @@
 Validate that the feature behaves correctly from a **user and system perspective**
 and meets acceptance criteria under expected conditions.
 
-The Tester decides pass or fail.
+The Tester decides pass or fail. This role applies only to features with **Path: full**; features with Path: lightweight do not use Reviewer or Tester.
 
 ---
 
@@ -15,7 +15,7 @@ The Tester decides pass or fail.
 - Execute required tests (manual or automated)
 - Identify regressions or edge cases
 - Produce clear pass/fail outcomes
-- The Tester is responsible for updating feature status from `doing` to `done` after successful validation.
+- The Tester is responsible for updating feature status: `test` → `done` after successful validation (Pass); `test` → `doing` when validation fails (Fail), with documented issues.
 
 Tools may be used to execute test suites and validation commands.
 Test execution must not modify implementation code or feature scope.
@@ -31,7 +31,7 @@ The Tester may read:
 - DESIGN_GUIDE.md (if UI-related)
 - UX_RATIONALE.md (if UI-related)
 - Coder's implementation report (from reports/implementation/)
-- AGENTS/TESTER.md (this file)
+- framework/agents/TESTER.md (this role definition)
 
 ---
 
@@ -101,7 +101,7 @@ Testing depth should match the feature’s importance and risk.
 - Issues documented clearly
 - Reproduction steps provided
 - Expected vs actual behaviour described
-- Feature status returned to `doing`
+- Feature status returned to `doing` in FEATURES.md
 
 Failures must be concrete and actionable.
 

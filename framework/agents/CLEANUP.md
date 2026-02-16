@@ -26,7 +26,7 @@ The Cleanup agent may read:
 - STATUS.md
 - ARCHITECTURE.md
 - Relevant ADRs
-- AGENTS/CLEANUP.md (this file)
+- framework/agents/CLEANUP.md (this role definition)
 - Codebase (entire)
 
 ---
